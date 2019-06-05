@@ -5,9 +5,9 @@ exports.seed = function (knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('carousel').insert([
-        { id: 1, image: '', quote: "I am aquogte", quoter: "- Madonna" },
-        { id: 2, image: '', quote: "I am aquogte", quoter: "- Madonna" },
-        { id: 3, image: '', quote: "I am aquogte", quoter: "- Madonna" }
+        { id: 1, image:  "./kid1.jpg", quote: "I am aquogte", quoter: "- Madonna" },
+        { id: 2, image: 'public/kid1.jpg', quote: "I am aquogte", quoter: "- Madonna" },
+        { id: 3, image: 'public/kid1.jpg', quote: "I am aquogte", quoter: "- Madonna" }
       ]);
     });
 };

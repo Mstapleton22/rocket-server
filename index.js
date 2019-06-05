@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.get('/', (req, res) => {
-  knex('methods')
+  knex('carousel')
     .then((rows) => {
       console.log(rows)
       res.send(rows);
@@ -20,3 +20,13 @@ app.get('/', (req, res) => {
       next(err);
     });
 })
+
+app.use((req, res, next) => {
+  res.status(404).send("404, path not found.")
+})
+
+app.use((req, res, next) => {
+  res.status(500).send("500, server error.")
+})
+
+app.listen(port, () => console.log(`app listening on port ${port}!`))
