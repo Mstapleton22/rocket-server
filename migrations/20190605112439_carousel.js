@@ -42,7 +42,7 @@ exports.up = (knex, Promise) => {
     }),
     knex.schema.createTable('calendar', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
-      table.string('date').notNullable().defaultsTo('')
+      table.date('date').notNullable().defaultsTo('')
       table.string('text').notNullable().defaultsTo('')
     }),
   ])
