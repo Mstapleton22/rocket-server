@@ -32,17 +32,17 @@ exports.up = (knex, Promise) => {
       table.integer('id').primary().notNullable().defaultsTo(0)
       table.binary('image').notNullable().defaultsTo('')
       table.string('name').notNullable().defaultsTo('')
-      table.string('body').notNullable().defaultsTo('')
+      table.text('body').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('staff', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
       table.string('name').notNullable().defaultsTo('')
       table.binary('image').notNullable().defaultsTo('')
-      table.string('bio').notNullable().defaultsTo('')
+      table.text('bio').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('calendar', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
-      table.date('date').notNullable().defaultsTo('')
+      table.date('date')
       table.string('text').notNullable().defaultsTo('')
     }),
   ])
