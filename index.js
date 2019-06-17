@@ -12,7 +12,7 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/', (req, res) => {
+app.get('/carousel', (req, res) => {
   knex('carousel')
     .then((rows) => {
       console.log(rows)

@@ -2,7 +2,8 @@ exports.up = (knex, Promise) => {
   return Promise.all([
     knex.schema.createTable('carousel', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
-      table.binary('image').notNullable().defaultsTo('')
+      table.string('image_name').notNullable().defaultsTo('')
+      table.string('image_url').notNullable().defaultsTo('')
       table.string('quote').notNullable().defaultsTo('')
       table.string('quoter').notNullable().defaultsTo('')
     }),
@@ -15,9 +16,8 @@ exports.up = (knex, Promise) => {
     }),
     knex.schema.createTable('accreditation', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
-      table.binary('image1').notNullable().defaultsTo('')
-      table.binary('image2').notNullable().defaultsTo('')
-      table.binary('image3').notNullable().defaultsTo('')
+      table.string('image_name').notNullable().defaultsTo('')
+      table.string('image_url').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('tuition', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
@@ -37,7 +37,8 @@ exports.up = (knex, Promise) => {
     knex.schema.createTable('staff', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
       table.string('name').notNullable().defaultsTo('')
-      table.binary('image').notNullable().defaultsTo('')
+      table.string('image_name').notNullable().defaultsTo('')
+      table.string('image_url').notNullable().defaultsTo('')
       table.text('bio').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('calendar', table => {
