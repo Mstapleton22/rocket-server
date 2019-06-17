@@ -21,8 +21,7 @@ exports.up = (knex, Promise) => {
     }),
     knex.schema.createTable('tuition', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
-      table.binary('image1').notNullable().defaultsTo('')
-      table.binary('image2').notNullable().defaultsTo('')
+      table.binary('image').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('parentHandbook', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
@@ -30,7 +29,8 @@ exports.up = (knex, Promise) => {
     }),
     knex.schema.createTable('programs', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
-      table.binary('image').notNullable().defaultsTo('')
+      table.string('image_name').notNullable().defaultsTo('')
+      table.string('image_url').notNullable().defaultsTo('')
       table.string('name').notNullable().defaultsTo('')
       table.text('body').notNullable().defaultsTo('')
     }),
