@@ -1,18 +1,31 @@
 require('dotenv').config() 
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3003
 const cors = require('cors')
 const environment = process.env.NODE_ENV || 'development'
 const knexConfig = require('./knexfile.js')[environment]
 const knex = require('knex')(knexConfig)
 const bodyParser = require('body-parser')
-
-
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/', (req, res) => {
+const sign_s3 = require('./controllers/sign_s3');
+
+app.use('/sign_s3', sign_s3.sign_s3);
+
+app.put('/programs/:id', (req, res, next) => {
+  knex('programs').update(req.body).where('id', req.params.id).returning('*')
+  .then((rows) => {
+    res.send(200)
+  })
+  .catch((err) => {
+    next(err)
+  })
+})
+
+app.get('/carousel', (req, res) => {
   knex('carousel')
     .then((rows) => {
       console.log(rows)
@@ -93,6 +106,6 @@ app.use((req, res, next) => {
   res.status(500).send("500, server error.")
 })
 
-app.listen(process.env.PORT || 9000);
+app.listen(port);
 console.log('Server up and running...');
 
