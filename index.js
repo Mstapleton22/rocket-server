@@ -25,6 +25,15 @@ app.put('/programs/:id', (req, res, next) => {
   })
 })
 
+app.post('/programs', (req, res, next) => {
+  knex('programs').insert(req.body)
+  .then((rows) => {
+    res.send(200)
+  })
+  .catch((err) => {
+    next(err)
+  })
+})
 
 app.put('/staff/:id', (req, res, next) => {
   knex('staff').update(req.body).where('id', req.params.id).returning('*')

@@ -1,7 +1,7 @@
 exports.up = (knex, Promise) => {
   return Promise.all([
     knex.schema.createTable('carousel', table => {
-      table.integer('id').primary().notNullable().defaultsTo(0)
+      table.increments('id').unsigned().primary()
       table.string('image_name').notNullable().defaultsTo('')
       table.string('image_url').notNullable().defaultsTo('')
       table.string('quote').notNullable().defaultsTo('')
@@ -15,13 +15,13 @@ exports.up = (knex, Promise) => {
       table.string('email').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('accreditation', table => {
-      table.integer('id').primary().notNullable().defaultsTo(0)
+      table.increments('id').unsigned().primary()
       table.string('image_name').notNullable().defaultsTo('')
       table.string('image_url').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('tuition', table => {
-      table.integer('id').primary().notNullable().defaultsTo(0),
-      table.string('name').notNullable.defaultsTo('')
+      table.increments('id').unsigned().primary()
+      table.string('name').notNullable().defaultsTo('')
       table.string('image_name').notNullable().defaultsTo('')
       table.string('image_url').notNullable().defaultsTo('')
     }),
@@ -30,24 +30,19 @@ exports.up = (knex, Promise) => {
       table.string('document').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('programs', table => {
-      table.integer('id').primary().notNullable().defaultsTo(0)
+      table.increments('id').unsigned().primary()
       table.string('image_name').notNullable().defaultsTo('')
       table.string('image_url').notNullable().defaultsTo('')
       table.string('name').notNullable().defaultsTo('')
       table.text('body').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('staff', table => {
-      table.integer('id').primary().notNullable().defaultsTo(0)
+      table.increments('id').unsigned().primary()
       table.string('name').notNullable().defaultsTo('')
       table.string('image_name').notNullable().defaultsTo('')
       table.string('image_url').notNullable().defaultsTo('')
       table.text('bio').notNullable().defaultsTo('')
-    }),
-    knex.schema.createTable('calendar', table => {
-      table.integer('id').primary().notNullable().defaultsTo(0)
-      table.date('date')
-      table.string('text').notNullable().defaultsTo('')
-    }),
+    })
   ])
 };
 
