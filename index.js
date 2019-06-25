@@ -77,7 +77,7 @@ app.put('/parentHandbook/', (req, res, next) => {
 })
 
 app.get('/carousel', (req, res) => {
-  knex('carousel')
+  knex('carousel').orderBy('id', 'asc')
     .then((rows) => {
       console.log(rows)
       res.send(rows);
@@ -87,7 +87,7 @@ app.get('/carousel', (req, res) => {
     });
 })
 app.get('/contact', (req, res) => {
-  knex('contact')
+  knex('contact').orderBy('id', 'asc')
     .then((rows) => {
       console.log(rows)
       res.send(rows);
@@ -97,7 +97,7 @@ app.get('/contact', (req, res) => {
     });
 })
 app.get('/accreditation', (req, res) => {
-  knex('accreditation')
+  knex('accreditation').orderBy('id', 'asc')
     .then((rows) => {
       console.log(rows)
       res.send(rows);
@@ -118,7 +118,7 @@ app.get('/parentHandbook', (req, res) => {
 })
 
 app.get('/programs', (req, res) => {
-  knex('programs')
+  knex('programs').orderBy('id', 'asc')
     .then((rows) => {
       res.send(rows);
     })
@@ -128,7 +128,7 @@ app.get('/programs', (req, res) => {
 })
 
 app.get('/staff', (req, res) => {
-  knex('staff')
+  knex('staff').orderBy('id', 'asc')
     .then((rows) => {
       console.log(rows)
       res.send(rows);
@@ -138,7 +138,7 @@ app.get('/staff', (req, res) => {
     });
 })
 app.get('/tuition', (req, res) => {
-  knex('tuition')
+  knex('tuition').orderBy('id', 'asc')
     .then((rows) => {
       console.log(rows)
       res.send(rows);

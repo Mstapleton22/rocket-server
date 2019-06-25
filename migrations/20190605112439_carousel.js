@@ -20,8 +20,10 @@ exports.up = (knex, Promise) => {
       table.string('image_url').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('tuition', table => {
-      table.integer('id').primary().notNullable().defaultsTo(0)
-      table.binary('image').notNullable().defaultsTo('')
+      table.integer('id').primary().notNullable().defaultsTo(0),
+      table.string('name').notNullable.defaultsTo('')
+      table.string('image_name').notNullable().defaultsTo('')
+      table.string('image_url').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('parentHandbook', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
