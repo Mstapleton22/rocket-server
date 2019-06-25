@@ -15,8 +15,8 @@ const sign_s3 = require('./controllers/sign_s3');
 
 app.use('/sign_s3', sign_s3.sign_s3);
 
-app.put('/programs/:id', (req, res, next) => {
-  knex('programs').update(req.body).where('id', req.params.id).returning('*')
+app.post('/programs', (req, res, next) => {
+  knex('programs').insert(req.body)
   .then((rows) => {
     res.send(200)
   })
@@ -25,8 +25,28 @@ app.put('/programs/:id', (req, res, next) => {
   })
 })
 
-app.post('/programs', (req, res, next) => {
-  knex('programs').insert(req.body)
+app.post('/staff', (req, res, next) => {
+  knex('staff').insert(req.body)
+  .then((rows) => {
+    res.send(200)
+  })
+  .catch((err) => {
+    next(err)
+  })
+})
+
+app.post('/carousel', (req, res, next) => {
+  knex('carousel').insert(req.body)
+  .then((rows) => {
+    res.send(200)
+  })
+  .catch((err) => {
+    next(err)
+  })
+})
+
+app.put('/programs/:id', (req, res, next) => {
+  knex('programs').update(req.body).where('id', req.params.id).returning('*')
   .then((rows) => {
     res.send(200)
   })
