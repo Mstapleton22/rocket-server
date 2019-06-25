@@ -38,7 +38,7 @@ app.post('/staff', (req, res, next) => {
 app.post('/carousel', (req, res, next) => {
   knex('carousel').insert(req.body)
   .then((rows) => {
-    res.send(200)
+    res.send(200) 
   })
   .catch((err) => {
     next(err)
