@@ -36,6 +36,16 @@ app.put('/staff/:id', (req, res, next) => {
   })
 })
 
+app.put('/carousel/:id', (req, res, next) => {
+  knex('carousel').update(req.body).where('id', req.params.id).returning('*')
+  .then((rows) => {
+    res.send(200)
+  })
+  .catch((err) => {
+    next(err)
+  })
+})
+
 app.get('/carousel', (req, res) => {
   knex('carousel')
     .then((rows) => {
