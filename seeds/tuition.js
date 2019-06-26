@@ -5,8 +5,8 @@ exports.seed = function (knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('tuition').insert([
-        { id: 1, name: '', image_name: '', image_url: '' },
-        { id: 2, name: '', image_name: '', image_url: '' },
+        { id: 1, name: 'K-5th ', image_name: 'tuition/k-5.png', image_url: 'https://augustana-elc-files.s3-us-west-1.amazonaws.com/tuition/k-5.png' },
+        { id: 2, name: 'Toddler and Preschool', image_name: 'tuition/tod-pk.png', image_url: 'https://augustana-elc-files.s3-us-west-1.amazonaws.com/tuition/tod-pk.png' },
       ]);
     });
 };
