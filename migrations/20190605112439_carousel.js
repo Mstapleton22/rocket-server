@@ -1,7 +1,7 @@
 exports.up = (knex, Promise) => {
   return Promise.all([
     knex.schema.createTable('carousel', table => {
-      table.increments('id').unsigned().primary()
+      table.integer('id').primary().notNullable().defaultsTo(0)
       table.string('image_name').notNullable().defaultsTo('')
       table.string('image_url').notNullable().defaultsTo('')
       table.string('quote').notNullable().defaultsTo('')
