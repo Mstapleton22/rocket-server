@@ -177,8 +177,8 @@ app.get('/tuition', (req, res) => {
     });
 })
 
-app.delete('programs/:id', (req, res, next) => {
-  db('programs').where({id: req.params.id}).del()
+app.delete('/programs/:id', (req, res, next) => {
+  knex('programs').where({id: req.params.id}).del()
   .then(data => {
       res.status(200).send({
       message: 'Method deleted',
