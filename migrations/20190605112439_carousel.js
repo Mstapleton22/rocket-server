@@ -15,7 +15,8 @@ exports.up = (knex, Promise) => {
       table.string('email').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('accreditation', table => {
-      table.increments('id').unsigned().primary()
+      table.increments('id').unsigned().primary(),
+      table.string('name').notNullable().defaultsTo('')
       table.string('image_name').notNullable().defaultsTo('')
       table.string('image_url').notNullable().defaultsTo('')
     }),
@@ -55,7 +56,6 @@ exports.down = (knex, Promise) => {
     knex.schema.dropTable('parentHandbook'),
     knex.schema.dropTable('programs'),
     knex.schema.dropTable('staff'),
-    knex.schema.dropTable('calendar'),
 
   ])
 };
