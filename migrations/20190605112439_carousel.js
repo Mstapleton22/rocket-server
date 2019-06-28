@@ -15,7 +15,7 @@ exports.up = (knex, Promise) => {
       table.string('email').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('accreditation', table => {
-      table.increments('id').unsigned().primary(),
+      table.integer('id').primary().notNullable().defaultsTo(0)
       table.string('name').notNullable().defaultsTo('')
       table.string('image_name').notNullable().defaultsTo('')
       table.string('image_url').notNullable().defaultsTo('')
