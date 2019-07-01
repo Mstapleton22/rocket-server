@@ -190,6 +190,19 @@ app.delete('/programs/:id', (req, res, next) => {
     })
 })
 
+app.delete('/staff/:id', (req, res, next) => {
+  knex('staff').where({id: req.params.id}).del()
+  .then(data => {
+      res.status(200).send({
+      message: 'Method deleted',
+      data: data
+    })
+  })
+    .catch((err)=> {
+      next(err)
+    })
+})
+
 
 app.use((req, res, next) => {
   res.status(404).send("404, path not found.")
