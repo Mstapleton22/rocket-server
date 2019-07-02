@@ -3,14 +3,18 @@ const nodeSES = require('node-ses');
 
 const htmlTemplate = (data) => {
   return `
+    <div>
+ 
+
     <p><strong>Name:</strong> ${data.name}</p>
     <p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
     <p><strong>Message:</strong> ${data.message}</p>
+    </div>
   `;
 };
 
 module.exports.sendMail = (sender, receivers, data) => {
-  
+
   AWS.config.update({region: 'us-east-1'});
 
   const params = {
