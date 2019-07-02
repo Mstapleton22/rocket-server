@@ -58,6 +58,7 @@ app.post('/carousel', (req, res, next) => {
 })
 
 app.put('/programs/:id', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*')
   knex('programs').update(req.body).where('id', req.params.id).returning('*')
   .then((rows) => {
     res.send(200)
