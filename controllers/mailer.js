@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk'); // Load the SDK for JavaScript
 const nodeSES = require('node-ses');
+require('dotenv').config(); 
 
 const htmlTemplate = (data) => {
   return `

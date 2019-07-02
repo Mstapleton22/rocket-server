@@ -7,13 +7,11 @@ const environment = process.env.NODE_ENV || 'development'
 const knexConfig = require('./knexfile.js')[environment]
 const knex = require('knex')(knexConfig)
 const bodyParser = require('body-parser')
-//add comment
 app.use(bodyParser.urlencoded({extend:true}));
 
 app.use(bodyParser.json())
 app.use(cors())
 
-// app.use(res.setHeader('Access-Control-Allow-Origin', '*'))
 
 const mailer = require("./controllers/mailer");
 const sign_s3 = require('./controllers/sign_s3');
@@ -58,7 +56,6 @@ app.post('/carousel', (req, res, next) => {
 })
 
 app.put('/programs/:id', (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*')
   knex('programs').update(req.body).where('id', req.params.id).returning('*')
   .then((rows) => {
     res.send(200)
