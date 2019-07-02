@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extend:true}));
 app.use(bodyParser.json())
 app.use(cors())
 
-// app.use(res.setHeader('Access-Control-Allow-Origin', '*'))
+app.use(res.setHeader('Access-Control-Allow-Origin', '*'))
 
 const mailer = require("./controllers/mailer");
 const sign_s3 = require('./controllers/sign_s3');
