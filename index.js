@@ -1,19 +1,28 @@
 require('dotenv').config() 
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3003
+const port = process.env.PORT ||  5000;
 const cors = require('cors')
 const environment = process.env.NODE_ENV || 'development'
 const knexConfig = require('./knexfile.js')[environment]
 const knex = require('knex')(knexConfig)
 const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({extended:true}));
+// app.use(bodyParser.urlencoded({extend:true}));
+
 app.use(bodyParser.json())
 app.use(cors())
 
+const mailer = require("./controllers/mailer");
 const sign_s3 = require('./controllers/sign_s3');
 
 app.use('/sign_s3', sign_s3.sign_s3);
+
+app.post('/api/contact', (req, res, next) => {
+  return mailer.sendMail('jculver1900@gmail.com', ['jculver1900@gmail.com'], req.body)
+    .then(() => res.send(req.body))
+    .catch(next);
+});
+
 
 app.post('/programs', (req, res, next) => {
   knex('programs').insert(req.body)
