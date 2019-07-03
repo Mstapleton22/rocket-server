@@ -18,7 +18,7 @@ exports.seed = function (knex, Promise) {
         { id: 11, name: 'Ms. Sharon', image: '', bio: '' },
         { id: 12, name: 'Ms. Shirley', image: '', bio: '' },
         { id: 13, name: 'Ms. Tamika', image: '', bio: '' },
-        { id: 14, name: 'My Yuliya', image: '', bio: '' },
+        { id: 14, name: 'Ms. Yuliya', image: '', bio: '' },
         { id: 15, name: 'Ms. Zoe', image: '', bio: "I have a Bachelor of Science in Interdisciplinary Studies in Social Science with a Concentration in Health and Society and CDA. I am currently working on obtaining my Coaching Credential. I started off volunteering for about 4 years (2004 - 2008), before I jumped into being a teacher full-time and thoroughly enjoy encouraging these young minds to grow. I joined Augustana 2 years ago in 2017. Outside of work, I love spending time with my husband Larry and our black lab named Beau." },
       ]);
     });
