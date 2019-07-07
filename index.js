@@ -7,7 +7,7 @@ const environment = process.env.NODE_ENV || 'development'
 const knexConfig = require('./knexfile.js')[environment]
 const knex = require('knex')(knexConfig)
 const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({extend:true}));
+// app.use(bodyParser.urlencoded({extend:true}));
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -15,7 +15,7 @@ app.use(cors())
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'PATCH, PUT, POST, GET, DELETE, OPTIONS');
      next();
 });
 
@@ -62,7 +62,7 @@ app.post('/carousel', (req, res, next) => {
   })
 })
 
-app.put('/programs/:id', (req, res, next) => {
+app.patch('/programs/:id', (req, res, next) => {
   knex('programs').update(req.body).where('id', req.params.id).returning('*')
   .then((rows) => {
     res.send(200)
@@ -72,7 +72,7 @@ app.put('/programs/:id', (req, res, next) => {
   })
 })
 
-app.put('/staff/:id', (req, res, next) => {
+app.patch('/staff/:id', (req, res, next) => {
   knex('staff').update(req.body).where('id', req.params.id).returning('*')
   .then((rows) => {
     res.send(200)
@@ -82,7 +82,7 @@ app.put('/staff/:id', (req, res, next) => {
   })
 })
 
-app.put('/carousel/:id', (req, res, next) => {
+app.patch('/carousel/:id', (req, res, next) => {
   knex('carousel').update(req.body).where('id', req.params.id).returning('*')
   .then((rows) => {
     res.send(200)
@@ -92,7 +92,7 @@ app.put('/carousel/:id', (req, res, next) => {
   })
 })
 
-app.put('/contact/', (req, res, next) => {
+app.patch('/contact/1', (req, res, next) => {
   knex('contact').update(req.body).where('id', 1).returning('*')
   .then((rows) => {
     res.send(200)
@@ -102,7 +102,7 @@ app.put('/contact/', (req, res, next) => {
   })
 })
 
-app.put('/accreditation/:id', (req, res, next) => {
+app.patch('/accreditation/:id', (req, res, next) => {
   knex('accreditation').update(req.body).where('id', req.params.id).returning('*')
   .then((rows) => {
     res.send(200)
@@ -112,7 +112,7 @@ app.put('/accreditation/:id', (req, res, next) => {
   })
 })
 
-app.put('/parentHandbook/', (req, res, next) => {
+app.patch('/parentHandbook/', (req, res, next) => {
   knex('parentHandbook').update(req.body).where('id', 1).returning('*')
   .then((rows) => {
     res.send(200)
