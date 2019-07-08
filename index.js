@@ -20,13 +20,14 @@ app.use(function(req, res, next) {
 });
 
 
-const mailer = require("./controllers/mailer");
+// const mailer = require("./controllers/mailer");
+const newmailer = require('./controllers/newmailer')
 const sign_s3 = require('./controllers/sign_s3');
 
 app.use('/sign_s3', sign_s3.sign_s3);
 
 app.post('/api/contact', (req, res, next) => {
-  return mailer.sendMail('jculver1900@gmail.com', ['jculver1900@gmail.com'], req.body)
+  return newmailer.sendMailOne('jculver1900@gmail.com', ['jculver1900@gmail.com'], req.body)
     .then(() => res.send(req.body))
     .catch(next);
 });
