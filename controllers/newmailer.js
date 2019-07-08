@@ -8,7 +8,21 @@ module.exports.sendMailOne = (sender, receivers, data) => {
     
 const doc = new PDFDocument();
 
-doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
+// doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
+// doc.end();
+
+doc.text(`Name: ${data.name}`, {
+  width: 410,
+  align: 'left'
+}
+);
+doc.moveDown();
+doc.text(`Name: ${data.email}`, {
+  width: 410,
+  align: 'left'
+}
+);
+
 doc.end();
 
 //     var pdfcrowd = require("pdfcrowd");
@@ -37,19 +51,7 @@ var mailOptions = {
         filename: 'text1.pdf',
         content: doc,
         encoding: 'base64'
-    },
-    {
-        // use pregenerated MIME node
-        raw: 'Content-Type: application/pdf\r\n' +
-             'Content-Disposition: attachment;\r\n' +
-             '\r\n' +
-             doc
-    },
-    {   // define custom content type for the attachment
-        filename: 'text3.pdf',
-        content: doc,
-        contentType: ' application/pdf  '
-    },
+    }
   ]
 };
 function callback(error, info) {
