@@ -10,8 +10,8 @@ module.exports.sendMailOne = (sender, receivers, data) => {
 var mailOptions = {
   from: sender,
   to: receivers,
-  text: 'This is some text',
-  html: '<b>This is some HTML</b>',
+  text: `Waitlist application for ${data.parent_name}`,
+  html: `<b>Waitlist application for ${data.parent_name}</b>`,
   attachments: [
     {   // encoded string as an attachment
         filename: 'text1.pdf',

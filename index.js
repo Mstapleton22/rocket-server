@@ -27,7 +27,7 @@ const sign_s3 = require('./controllers/sign_s3');
 app.use('/sign_s3', sign_s3.sign_s3);
 
 app.post('/api/contact', (req, res, next) => {
-  return newmailer.sendMailOne('jculver1900@gmail.com', ['jculver1900@gmail.com'], req.body)
+  return newmailer.sendMailOne('aelcdenver@gmail.com', ['aelcdenver@gmail.com'], req.body)
     .then(() => res.send(req.body))
     .catch(next);
 });

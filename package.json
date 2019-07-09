@@ -12,6 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/Mstapleton22/rocket-server.git"
   },
+  "engines": {
+    "express": "^4.16.4",
+    "node": "11.0.0"
+ }, 
   "author": "",
   "license": "ISC",
   "bugs": {
