@@ -123,6 +123,17 @@ app.patch('/parentHandbook/', (req, res, next) => {
   })
 })
 
+app.get('/', (req, res) => {
+  knex('carousel').orderBy('id', 'asc')
+    .then((rows) => {
+      console.log(rows)
+      res.send(rows);
+    })
+    .catch((err) => {
+      next(err);
+    });
+})
+
 app.get('/carousel', (req, res) => {
   knex('carousel').orderBy('id', 'asc')
     .then((rows) => {
@@ -133,6 +144,7 @@ app.get('/carousel', (req, res) => {
       next(err);
     });
 })
+
 app.get('/contact', (req, res) => {
   knex('contact').orderBy('id', 'asc')
     .then((rows) => {
