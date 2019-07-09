@@ -14,8 +14,8 @@
   },
   "engines": {
     "express": "^4.16.4",
-    "node": "11.0.0"
- }, 
+    "node": "11.12.0"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
