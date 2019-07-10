@@ -1,6 +1,5 @@
-var aws = require('aws-sdk');
-
 require('dotenv').config(); 
+var aws = require('aws-sdk');
 
 aws.config.update({
   region: 'us-west-1', 
@@ -10,15 +9,8 @@ aws.config.update({
 
 const S3_BUCKET = process.env.bucket
 
-exports.sign_s3 = (req,res) => {
+exports.sign_s3 = (req, res) => {
 
-  aws.config.update({
-    region: 'us-west-1', 
-    accessKeyId: process.env.AWSAccessKeyId,
-    secretAccessKey: process.env.AWSSecretKey
-  })
-  
-  const S3_BUCKET = process.env.bucket
 
   const s3 = new aws.S3();  
   const fileName = req.body.fileName;
@@ -27,7 +19,7 @@ exports.sign_s3 = (req,res) => {
   const s3Params = {
     Bucket: S3_BUCKET,
     Key: fileName,
-    Expires: 50,
+    Expires: 200,
     ContentType: fileType,
     ACL: 'public-read'
   };
