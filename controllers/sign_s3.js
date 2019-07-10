@@ -27,6 +27,7 @@ exports.sign_s3 = (req, res) => {
 s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if(err){
       res.json({success: false, error: err})
+      return;
     }
     const returnData = {
       signedRequest: data,
