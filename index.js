@@ -77,7 +77,7 @@ app.patch('/staff/:id', (req, res, next) => {
   knex('staff').update(req.body).where('id', req.params.id).returning('*')
   .then((rows) => {
     // res.send(200)
-    res.sendStatus(status)
+    res.sendStatus(200)
   })
   .catch((err) => {
     next(err)
