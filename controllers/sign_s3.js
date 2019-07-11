@@ -3,11 +3,11 @@ var aws = require('aws-sdk');
 
 aws.config.update({
   region: 'us-west-1', 
-  accessKeyId: process.env.AWSAccessKeyId,
-  secretAccessKey: process.env.AWSSecretKey
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: AWS_SECRET_ACCESS_KE
 })
 
-const S3_BUCKET = process.env.bucket
+const S3_BUCKET = process.env.S3_BUCKET
 
 exports.sign_s3 = (req, res) => {
 
@@ -19,7 +19,7 @@ exports.sign_s3 = (req, res) => {
   const s3Params = {
     Bucket: S3_BUCKET,
     Key: fileName,
-    Expires: 200,
+    Expires: 120,
     ContentType: fileType,
     ACL: 'public-read'
   };
