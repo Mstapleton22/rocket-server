@@ -1,6 +1,5 @@
-var nodemailer = require('nodemailer');
-var sesTransport = require('nodemailer-ses-transport');
-// var pdfcrowd = require("pdfcrowd");
+const nodemailer = require('nodemailer');
+const sesTransport = require('nodemailer-ses-transport');
 const PDFDocument =require('pdfkit')
 const emailTemplate = require('../emailTemplate')
 
@@ -13,8 +12,8 @@ var mailOptions = {
   text: `Waitlist application for ${data.parent_name}`,
   html: `<b>Waitlist application for ${data.parent_name}</b>`,
   attachments: [
-    {   // encoded string as an attachment
-        filename: 'text1.pdf',
+    {   
+        filename: `W.A. ${data.parent_name}`,
         content: emailTemplate.waitinglist(data),
         encoding: 'base64'
     }

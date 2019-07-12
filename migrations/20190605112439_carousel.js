@@ -43,6 +43,11 @@ exports.up = (knex, Promise) => {
       table.string('image_name').notNullable().defaultsTo('')
       table.string('image_url').notNullable().defaultsTo('')
       table.text('bio').notNullable().defaultsTo('')
+    }),
+    knex.schema.createTable('mission_vision', table => {
+      table.integer('id').unsigned().primary()
+      table.string('name').notNullable().defaultsTo('')
+      table.string('body').notNullable().defaultsTo('')
     })
   ])
 };

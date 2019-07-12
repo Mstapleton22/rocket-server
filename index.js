@@ -61,6 +61,16 @@ app.post('/carousel', (req, res, next) => {
   })
 })
 
+app.patch('/missionAndvision/:id', (req, res, next) => {
+  knex('mission_vision').update(req.body).where('id', req.params.id).returning('*')
+  .then((rows) => {
+    res.send(200)
+  })
+  .catch((err) => {
+    next(err)
+  })
+})
+
 app.patch('/programs/:id', (req, res, next) => {
   knex('programs').update(req.body).where('id', req.params.id).returning('*')
   .then((rows) => {
@@ -120,6 +130,17 @@ app.patch('/parentHandbook/', (req, res, next) => {
   .catch((err) => {
     next(err)
   })
+})
+
+app.get('/missionAndVission', (req, res) => {
+  knex('mission_vission').orderBy('id', 'asc')
+    .then((rows) => {
+      console.log(rows)
+      res.send(rows);
+    })
+    .catch((err) => {
+      next(err);
+    });
 })
 
 app.get('/', (req, res) => {
