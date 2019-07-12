@@ -9,8 +9,8 @@ module.exports.sendMailOne = (sender, receivers, data) => {
 var mailOptions = {
   from: sender,
   to: receivers,
-  text: `Waitlist application for ${data.parent_name}`,
-  html: `<b>Waitlist application for ${data.parent_name}</b>`,
+  text: `Waitlist application for ${data.parent_name[0]}`,
+  html: `<b>Waitlist application for ${data.parent_name[0]}</b>`,
   attachments: [
     {   
         filename: `W.A. ${data.parent_name}`,
@@ -28,7 +28,7 @@ function callback(error, info) {
 }
 
 // Send e-mail using AWS SES
-mailOptions.subject = 'Nodemailer SES transporter';
+mailOptions.subject = `W.A for ${data.parent_name[0]}`;
 var sesTransporter = nodemailer.createTransport(sesTransport({
   accessKeyId: process.env.AWSAccessKeyId,
   secretAccessKey: process.env.AWSSecretKey,
