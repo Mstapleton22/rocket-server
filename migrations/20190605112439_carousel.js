@@ -47,7 +47,7 @@ exports.up = (knex, Promise) => {
     knex.schema.createTable('mission_vision', table => {
       table.integer('id').unsigned().primary()
       table.string('name').notNullable().defaultsTo('')
-      table.string('body').notNullable().defaultsTo('')
+      table.string('body',1000).notNullable().defaultsTo('')
     })
   ])
 };
