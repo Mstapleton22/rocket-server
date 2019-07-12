@@ -28,7 +28,7 @@ function callback(error, info) {
 }
 
 // Send e-mail using AWS SES
-mailOptions.subject = `W.A for ${data.parent_name}`;
+mailOptions.subject = `W.A`;
 var sesTransporter = nodemailer.createTransport(sesTransport({
   accessKeyId: process.env.AWSAccessKeyId,
   secretAccessKey: process.env.AWSSecretKey,
