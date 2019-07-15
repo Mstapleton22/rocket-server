@@ -186,7 +186,7 @@ app.get('/parentHandbook', (req, res) => {
 })
 
 app.get('/programs', (req, res) => {
-  knex('programs').orderBy('id', 'asc')
+  knex('programs').orderBy('name', 'asc')
     .then((rows) => {
       res.send(rows);
     })
@@ -196,7 +196,7 @@ app.get('/programs', (req, res) => {
 })
 
 app.get('/staff', (req, res) => {
-  knex('staff').orderBy('id', 'asc')
+  knex('staff').orderBy('name', 'asc')
     .then((rows) => {
       console.log(rows)
       res.send(rows);
