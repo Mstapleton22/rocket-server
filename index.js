@@ -132,17 +132,6 @@ app.patch('/parentHandbook/', (req, res, next) => {
   })
 })
 
-app.get('/missionAndVission', (req, res) => {
-  knex('mission_vission').orderBy('id', 'asc')
-    .then((rows) => {
-      console.log(rows)
-      res.send(rows);
-    })
-    .catch((err) => {
-      next(err);
-    });
-})
-
 app.get('/', (req, res) => {
   knex('carousel').orderBy('id', 'asc')
     .then((rows) => {
@@ -218,6 +207,17 @@ app.get('/staff', (req, res) => {
 })
 app.get('/tuition', (req, res) => {
   knex('tuition').orderBy('id', 'asc')
+    .then((rows) => {
+      console.log(rows)
+      res.send(rows);
+    })
+    .catch((err) => {
+      next(err);
+    });
+})
+
+app.get('/missionAndvision', (req, res) => {
+  knex('mission_vision').orderBy('id', 'asc')
     .then((rows) => {
       console.log(rows)
       res.send(rows);
