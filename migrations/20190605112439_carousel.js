@@ -28,7 +28,8 @@ exports.up = (knex, Promise) => {
     }),
     knex.schema.createTable('parentHandbook', table => {
       table.integer('id').primary().notNullable().defaultsTo(0)
-      table.string('document').notNullable().defaultsTo('')
+      table.string('name').notNullable().defaultsTo('')
+      table.string('url').notNullable().defaultsTo('')
     }),
     knex.schema.createTable('programs', table => {
       table.increments('id').unsigned().primary()
@@ -44,6 +45,7 @@ exports.up = (knex, Promise) => {
       table.string('image_url').notNullable().defaultsTo('')
       table.text('bio').notNullable().defaultsTo('')
     }),
+
     knex.schema.createTable('mission_vision', table => {
       table.integer('id').unsigned().primary()
       table.string('name').notNullable().defaultsTo('')
@@ -61,6 +63,6 @@ exports.down = (knex, Promise) => {
     knex.schema.dropTable('parentHandbook'),
     knex.schema.dropTable('programs'),
     knex.schema.dropTable('staff'),
-
+    knex.schema.dropTable('mission_vision')
   ])
 };
