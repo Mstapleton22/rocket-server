@@ -122,7 +122,7 @@ app.patch('/accreditation/:id', (req, res, next) => {
   })
 })
 
-app.patch('/parentHandbook/', (req, res, next) => {
+app.patch('/parentHandbook/1', (req, res, next) => {
   knex('parentHandbook').update(req.body).where('id', 1).returning('*')
   .then((rows) => {
     res.send(200)
@@ -177,7 +177,6 @@ app.get('/accreditation', (req, res) => {
 app.get('/parentHandbook', (req, res) => {
   knex('parentHandbook')
     .then((rows) => {
-    
       res.send(rows);
     })
     .catch((err) => {
